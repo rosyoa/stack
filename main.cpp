@@ -5,7 +5,12 @@
 #include "utils/test.hpp"
 
 int main() {
-    test("Stack function", []() {
+    std::cout << "\n\n"
+              << "*************************\n"
+              << "* Running unit tests... *\n"
+              << "*************************\n";
+
+    test(" -> Stack functionality", []() {
         Stack<int> stack(3);
         try {
             stack.push(1);
@@ -26,7 +31,7 @@ int main() {
         return true;
     });
 
-    test("Push to full stack", []() {
+    test(" -> Push to full stack", []() {
         Stack<int> stack(3);
         try {
             stack.push(0);
@@ -43,7 +48,7 @@ int main() {
         return false;
     });
 
-    test("Pop from empty stack", []() {
+    test(" -> Pop from empty stack", []() {
         Stack<int> stack(3);
         try {
             stack.push(0);
@@ -61,7 +66,7 @@ int main() {
         return false;
     });
 
-    test("Push to stack with 0 capacity", []() {
+    test(" -> Push to stack with 0 capacity", []() {
         Stack<int> stack(0);
         try {
             stack.push(0);
@@ -71,7 +76,7 @@ int main() {
         return false;
     });
 
-    test("Pop from stack with 0 capacity", []() {
+    test(" -> Pop from stack with 0 capacity", []() {
         Stack<int> stack(0);
         try {
             stack.pop();
