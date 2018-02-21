@@ -31,7 +31,7 @@ int main() {
         return true;
     });
 
-    test(" -> Push to full stack", []() {
+    test(" -> Push to full stack with move semantics", []() {
         Stack<int> stack(3);
         try {
             stack.push(0);
@@ -42,6 +42,24 @@ int main() {
         }
         try {
             stack.push(0);
+        } catch (std::out_of_range) {
+            return true;
+        }
+        return false;
+    });
+
+    test(" -> Push to full stack with copy semantics", []() {
+        int a = 0;
+        Stack<int> stack(3);
+        try {
+            stack.push(a);
+            stack.push(a);
+            stack.push(a);
+        } catch (std::out_of_range) {
+            return false;
+        }
+        try {
+            stack.push(a);
         } catch (std::out_of_range) {
             return true;
         }
@@ -85,6 +103,8 @@ int main() {
         }
         return false;
     });
+
+    std::cout << "** \033[32mALL TESTS PASSED, congrats!\033[0m **";
 
     return 0;
 }
