@@ -26,11 +26,11 @@ public:
     }
 
     T pop() {
-<<<<<<< HEAD
+
         if (position_ < 0) throw std::out_of_range("Stack is empty");
-=======
+
         if (position_ <= 0) throw std::out_of_range("Stack is empty");
->>>>>>> bugfixes
+
         return std::move(storage_[--position_]);
     }
 
